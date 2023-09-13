@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension String {
+public extension String {
     func countOccurrences(of subString: String) -> Int {
         var count = 0
         var searchRange = self.startIndex..<self.endIndex
