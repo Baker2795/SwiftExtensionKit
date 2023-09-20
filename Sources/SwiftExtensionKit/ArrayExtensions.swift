@@ -7,10 +7,10 @@
 
 import Foundation
 
-extension Array {
+public extension Array {
     
     // MARK: - Shuffle
-    
+    /// Allows full shuffle of an array
     mutating func shuffle() {
         for i in stride(from: count - 1, to: 0, by: -1) {
             let j = Int.random(in: 0...i)
@@ -21,7 +21,7 @@ extension Array {
     }
     
     // MARK: - Group By
-    
+    /// Creates a dictionary of array elements grouped by specific key
     func groupBy<Key: Hashable>(_ keyFunction: (Element) -> Key) -> [Key: [Element]] {
         var groupedDictionary = [Key: [Element]]()
         for element in self {
@@ -38,10 +38,10 @@ extension Array {
     
 }
 
-extension Array where Element: Equatable {
+public extension Array where Element: Equatable {
     
     // MARK: - Removing Duplicates
-    
+    /// Removes all duplicate elements from an array
     func removingDuplicates() -> [Element] {
         var result = [Element]()
         for element in self {

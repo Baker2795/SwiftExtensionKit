@@ -8,6 +8,8 @@
 import Foundation
 
 public extension String {
+    
+    /// Counts how many times a substring occurs within a string
     func countOccurrences(of subString: String) -> Int {
         var count = 0
         var searchRange = self.startIndex..<self.endIndex
