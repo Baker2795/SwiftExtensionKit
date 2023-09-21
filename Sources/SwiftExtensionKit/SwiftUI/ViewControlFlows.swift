@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 13, *)
-extension View {
+public extension View {
     /// Conditionally applies a modifier to the view based on a provided condition.
     ///
     /// - Parameters:
