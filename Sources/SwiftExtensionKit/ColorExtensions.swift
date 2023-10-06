@@ -7,7 +7,14 @@
 
 import SwiftUI
 
-public extension UIColor {
+#if os(iOS)
+    typealias OSColor = UIColor
+#elseif os(OSX)
+    typealias OSColor = NSColor
+#endif
+
+@available(iOS 14, *)
+public extension OSColor {
     /// Extension to determine if a color is considered "dark" or not
     var isDarkColor: Bool {
         var r, g, b, a: CGFloat
@@ -22,6 +29,6 @@ public extension UIColor {
 public extension Color {
     /// Allows SwiftUI Color to use UIColor extension `isDarkColor`
     var isDarkColor : Bool {
-        return UIColor(self).isDarkColor
+        return OSColor(self).isDarkColor
     }
 }
