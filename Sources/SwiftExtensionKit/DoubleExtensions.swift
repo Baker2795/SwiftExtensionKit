@@ -7,8 +7,7 @@
 
 import Foundation
 
-extension Double {
-    
+public extension Double {
     /// Takes a double & converts it to a percentage
     func asPercentageString() -> String {
         let formatter = NumberFormatter()
