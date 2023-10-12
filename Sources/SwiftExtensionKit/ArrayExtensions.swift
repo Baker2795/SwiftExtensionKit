@@ -52,4 +52,10 @@ public extension Array where Element: Equatable {
         return result
     }
     
+    // MARK: - Does not contain
+    /// Simple helper extension to determine if array does not contain something
+    func doesNotContain(_ element: Element) -> Bool {
+        return !self.contains(element)
+    }
+    
 }
