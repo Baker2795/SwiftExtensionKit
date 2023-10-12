@@ -21,4 +21,18 @@ public extension String {
 
         return count
     }
+    
+    /// Modify's the string & removes the last character
+    mutating func removeLastCharacter() {
+        if !self.isEmpty {
+            self.removeLast()
+        }
+    }
+    
+    /// Removes the last character of a string
+    func removingLastCharacter() -> String {
+        var modifiedString = self
+        modifiedString.removeLast()
+        return modifiedString
+    }
 }
