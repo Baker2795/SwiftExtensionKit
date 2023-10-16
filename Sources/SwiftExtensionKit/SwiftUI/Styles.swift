@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 13, *)
 public struct PulsatingNeonGlowModifier: ViewModifier {
     @State private var isPulsating: Bool = false
     var pulseDuration: Double = 1.5
@@ -27,6 +28,7 @@ public struct PulsatingNeonGlowModifier: ViewModifier {
     }
 }
 
+@available(iOS 13, *)
 public extension View {
     func addPulsatingNeonGlow(pulseDuration: Double = 1.5, glowColor: Color = .blue) -> some View {
         self.modifier(PulsatingNeonGlowModifier(pulseDuration: pulseDuration, glowColor: glowColor))
