@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Date {
+public extension Date {
     func isToday() -> Bool {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
