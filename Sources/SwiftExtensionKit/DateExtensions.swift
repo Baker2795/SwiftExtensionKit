@@ -15,4 +15,10 @@ extension Date {
         
         return calendar.isDate(today, inSameDayAs: selfDate)
     }
+    
+    func minutesDifference(to date: Date) -> Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.minute], from: self, to: date)
+        return components.minute ?? 0
+    }
 }
