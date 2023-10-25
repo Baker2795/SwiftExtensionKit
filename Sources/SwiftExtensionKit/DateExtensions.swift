@@ -24,4 +24,49 @@ public extension Date {
         let components = calendar.dateComponents([.minute], from: self, to: date)
         return components.minute ?? 0
     }
+    
+    func localizedShortDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale.current
+
+        return dateFormatter.string(from: self)
+    }
+    
+    func localizedLongDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale.current
+
+        return dateFormatter.string(from: self)
+    }
+    
+    func localizedShortDateTime() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        dateFormatter.locale = Locale.current
+
+        return dateFormatter.string(from: self)
+    }
+    
+    func localizedLongDateTime() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .short
+        dateFormatter.locale = Locale.current
+
+        return dateFormatter.string(from: self)
+    }
+    
+    func localizedShortTime() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .short
+        dateFormatter.locale = Locale.current
+
+        return dateFormatter.string(from: self)
+    }
 }
