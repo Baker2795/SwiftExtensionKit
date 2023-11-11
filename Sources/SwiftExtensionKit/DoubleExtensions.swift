@@ -16,4 +16,13 @@ public extension Double {
         formatter.maximumFractionDigits = 2
         return formatter.string(from: NSNumber(value: self)) ?? ""
     }
+    
+    /// Takes a double & converts it to display currency amount
+    func asLocalizedDisplayCurrency() -> String {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currencyAccounting
+        return formatter.string(from: self as NSNumber) ?? ""
+    }
+    
 }
