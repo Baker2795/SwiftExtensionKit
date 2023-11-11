@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftExtensionKit",
-    platforms: [.iOS(.v11), .macOS(.v11)],
+    platforms: [.iOS(.v11)],
     products: [
         .library(
             name: "SwiftExtensionKit",

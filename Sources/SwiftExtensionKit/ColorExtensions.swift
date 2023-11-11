@@ -13,7 +13,6 @@ import SwiftUI
     typealias OSColor = NSColor
 #endif
 
-@available(iOS 14, *)
 public extension OSColor {
     /// Extension to determine if a color is considered "dark" or not
     var isDarkColor: Bool {
