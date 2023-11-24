@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-extension UIFont {
+public extension UIFont {
     @available(iOS 14.0, *)
     class func preferredFont(font: Font, weight: Font.Weight) -> UIFont {
         let style: UIFont.TextStyle
