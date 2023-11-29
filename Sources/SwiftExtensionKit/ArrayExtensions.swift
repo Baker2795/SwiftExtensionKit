@@ -36,6 +36,15 @@ public extension Array {
         return groupedDictionary
     }
     
+    // MARK: - Get
+    /// Returns a group of dictionary items based on an IndexSet
+    func get(atOffsets indexes: IndexSet) -> [Element] {
+        return indexes.compactMap { index in
+            guard index < self.count else { return nil }
+            return self[index]
+        }
+    }
+    
 }
 
 public extension Array where Element: Equatable {
