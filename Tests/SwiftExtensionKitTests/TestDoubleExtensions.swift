@@ -9,6 +9,12 @@ final class DoubleExtensionTests: XCTestCase {
         currencyDouble = -10.0
         XCTAssertEqual(currencyDouble.asLocalizedDisplayCurrency(), "($10.00)")
         
+        currencyDouble = -10.0
+        XCTAssertEqual(currencyDouble.asLocalizedDisplayCurrency(showDecimals: false), "($10)")
+        
+        currencyDouble = 10.0
+        XCTAssertEqual(currencyDouble.asLocalizedDisplayCurrency(showDecimals: false), "$10")
+        
         currencyDouble = 1000.0
         XCTAssertEqual(currencyDouble.asLocalizedDisplayCurrency(), "$1,000.00")
         

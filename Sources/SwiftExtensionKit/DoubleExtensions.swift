@@ -18,11 +18,15 @@ public extension Double {
     }
     
     /// Takes a double & converts it to display currency amount
-    func asLocalizedDisplayCurrency() -> String {
+    func asLocalizedDisplayCurrency(showDecimals: Bool = true) -> String {
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
         formatter.numberStyle = .currencyAccounting
+        
+        if !showDecimals {
+            formatter.maximumFractionDigits = 0
+        }
+        
         return formatter.string(from: self as NSNumber) ?? ""
     }
-    
 }
