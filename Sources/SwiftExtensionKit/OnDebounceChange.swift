@@ -9,19 +9,19 @@ import SwiftUI
 import Combine
 
 @available(iOS 14.0, *)
-struct DebouncedChangeModifier<Value>: ViewModifier where Value: Equatable {
+public struct DebouncedChangeModifier<Value>: ViewModifier where Value: Equatable {
     @Binding private var value: Value
     private let delay: TimeInterval
     private let action: (Value) -> Void
     @State private var cancellable: AnyCancellable?
 
-    init(of value: Binding<Value>, delay: TimeInterval, action: @escaping (Value) -> Void) {
+    public init(of value: Binding<Value>, delay: TimeInterval, action: @escaping (Value) -> Void) {
         self.delay = delay
         self.action = action
         self._value = value
     }
 
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         if #available(iOS 17, *) {
         content
             .onChange(of: value) { oldValue, newValue in
@@ -49,7 +49,7 @@ struct DebouncedChangeModifier<Value>: ViewModifier where Value: Equatable {
 }
 
 @available(iOS 14.0, *)
-extension View {
+public extension View {
     func onDebouncedChange<Value>(of value: Binding<Value>, delay: TimeInterval, action: @escaping (Value) -> Void) -> some View where Value: Equatable {
         self.modifier(DebouncedChangeModifier(of: value, delay: delay, action: action))
     }
