@@ -15,6 +15,11 @@ public struct SegmentedMultiPicker: View {
     /// unordered group of selected indexes
     @Binding var selectedIndexes: [Int]
     
+    public init(components: [String], selectedIndexes: Binding<[Int]>) {
+        self.components = components
+        self._selectedIndexes = selectedIndexes
+    }
+    
     public var body: some View {
         HStack(spacing: 0) {
             ForEach(0..<components.count, id: \.self) { index in
