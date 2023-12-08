@@ -17,13 +17,14 @@ public extension URL {
         // Remove "www." if it exists
         let cleanedHost = host.hasPrefix("www.") ? String(host.dropFirst(4)) : host
 
+        var domain: String?
         // Find the last period to get the TLD
         if let lastPeriodRange = cleanedHost.range(of: ".", options: .backwards) {
             let tld = cleanedHost[lastPeriodRange.upperBound...]
-            return String(tld)
+            domain = String(tld)
         }
 
-        return cleanedHost
+        return "\(cleanedHost).\(domain ?? "")"
     }
 }
 
