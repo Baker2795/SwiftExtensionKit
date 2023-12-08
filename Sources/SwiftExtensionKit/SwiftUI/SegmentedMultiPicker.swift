@@ -42,7 +42,8 @@ public struct SegmentedMultiPicker: View {
                     if selectedIndexes.contains(index) {
                         RoundedRectangle(cornerRadius: 6.0)
                             .fill(.white)
-                            .padding(2)
+                            .padding(.vertical, 1)
+                            .padding(.horizontal ,2)
                     }
                 }
                 if index != components.count - 1 {
