@@ -37,7 +37,7 @@ public extension String {
         // Insert spaces for better formatting
         if cleanedString.count == 10 {
             let index1 = cleanedString.index(cleanedString.startIndex, offsetBy: 3)
-            let index2 = cleanedString.index(cleanedString.startIndex, offsetBy: 6)
+            let index2 = cleanedString.index(cleanedString.startIndex, offsetBy: 7)
             cleanedString.insert(" ", at: index1)
             cleanedString.insert(" ", at: index2)
         }
