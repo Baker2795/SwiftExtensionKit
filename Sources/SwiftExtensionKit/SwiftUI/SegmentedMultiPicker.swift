@@ -13,9 +13,9 @@ public struct SegmentedMultiPicker: View {
     @State var components: [String]
     
     /// unordered group of selected indexes
-    @Binding var selectedIndexes: [Int]
+    @Binding var selectedIndexes: IndexSet
     
-    public init(components: [String], selectedIndexes: Binding<[Int]>) {
+    public init(components: [String], selectedIndexes: Binding<IndexSet>) {
         self.components = components
         self._selectedIndexes = selectedIndexes
     }
@@ -25,9 +25,9 @@ public struct SegmentedMultiPicker: View {
             ForEach(0..<components.count, id: \.self) { index in
                 Button(action: {
                     if selectedIndexes.contains(index) {
-                        self.selectedIndexes.removeAll(where: { $0 == index })
+                        self.selectedIndexes.remove(index)
                     } else {
-                        self.selectedIndexes.insert(index, at: index)
+                        self.selectedIndexes.insert(index)
                     }
                 }) {
                     Text(components[index])
@@ -62,7 +62,7 @@ public struct SegmentedMultiPicker: View {
 
 @available(iOS 15.0, *)
 #Preview {
-    @State var selection: [Int] = []
+    @State var selection: IndexSet = []
     
     return SegmentedMultiPicker(components: Calendar.current.veryShortWeekdaySymbols, selectedIndexes: $selection)
 }
