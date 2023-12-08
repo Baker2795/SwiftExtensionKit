@@ -2,11 +2,10 @@ import XCTest
 @testable import SwiftExtensionKit
 
 final class StringExtensionTests: XCTestCase {
-    func testExample() throws {
-        // XCTest Documenation
-        // https://developer.apple.com/documentation/xctest
-
-        // Defining Test Cases and Test Methods
-        // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
+    
+    func testCleanPhoneString() {
+        let phoneString = "+1 (302) 781 1164"
+        
+        XCTAssertEqual("(302) 781-1164", phoneString.cleanedPhoneNumber())
     }
 }

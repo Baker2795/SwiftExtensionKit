@@ -38,8 +38,13 @@ public extension String {
         if cleanedString.count == 10 {
             let index1 = cleanedString.index(cleanedString.startIndex, offsetBy: 3)
             let index2 = cleanedString.index(cleanedString.startIndex, offsetBy: 7)
+            let index3 = cleanedString.index(cleanedString.startIndex, offsetBy: 0)
+            let index4 = cleanedString.index(cleanedString.startIndex, offsetBy: 4)
+            
             cleanedString.insert(" ", at: index1)
-            cleanedString.insert(" ", at: index2)
+            cleanedString.insert("-", at: index2)
+            cleanedString.insert("(", at: index3)
+            cleanedString.insert(")", at: index4)
         }
         
         return cleanedString
