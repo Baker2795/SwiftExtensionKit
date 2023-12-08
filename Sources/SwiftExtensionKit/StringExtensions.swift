@@ -23,6 +23,28 @@ public extension String {
         return count
     }
     
+    func cleanedPhoneNumber() -> String {
+        // Remove leading country code if it starts with "+1"
+        var cleanedString = self
+        if cleanedString.hasPrefix("+1") {
+            cleanedString.removeFirst(2)
+        }
+        
+        // Remove spaces and other non-digit characters
+        let allowedCharacterSet = CharacterSet(charactersIn: "0123456789")
+        cleanedString = String(cleanedString.unicodeScalars.filter { allowedCharacterSet.contains($0) })
+        
+        // Insert spaces for better formatting
+        if cleanedString.count == 10 {
+            let index1 = cleanedString.index(cleanedString.startIndex, offsetBy: 3)
+            let index2 = cleanedString.index(cleanedString.startIndex, offsetBy: 6)
+            cleanedString.insert(" ", at: index1)
+            cleanedString.insert(" ", at: index2)
+        }
+        
+        return cleanedString
+    }
+    
     /// Modify's the string & removes the last character
     mutating func removeLastCharacter() {
         if !self.isEmpty {
