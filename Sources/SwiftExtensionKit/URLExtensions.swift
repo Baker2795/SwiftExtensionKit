@@ -24,7 +24,7 @@ public extension URL {
             domain = String(tld)
         }
 
-        return "\(cleanedHost).\(domain ?? "")"
+        return "\(cleanedHost)"
     }
 }
 
