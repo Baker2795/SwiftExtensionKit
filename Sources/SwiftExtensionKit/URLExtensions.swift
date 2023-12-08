@@ -13,16 +13,16 @@ public extension URL {
         guard let host = self.host else {
             return nil
         }
-        
+
         // Remove "www." if it exists
         let cleanedHost = host.hasPrefix("www.") ? String(host.dropFirst(4)) : host
-        
-        // Remove any trailing marks after the first qualifier
-        if let firstQualifierRange = cleanedHost.range(of: ".") {
-            let firstQualifier = cleanedHost[..<firstQualifierRange.lowerBound]
-            return String(firstQualifier)
+
+        // Find the last period to get the TLD
+        if let lastPeriodRange = cleanedHost.range(of: ".", options: .backwards) {
+            let tld = cleanedHost[lastPeriodRange.upperBound...]
+            return String(tld)
         }
-        
+
         return cleanedHost
     }
 }
