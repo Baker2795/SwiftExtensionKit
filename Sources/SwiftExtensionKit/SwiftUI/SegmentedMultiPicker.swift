@@ -10,13 +10,13 @@ import SwiftUI
 @available(iOS 15.0, *)
 public struct SegmentedMultiPicker: View {
     
-    @State var components: [String]
+    @State var components: [String] = []
     
     /// unordered group of selected indexes
     @Binding var selectedIndexes: IndexSet
     
     public init(components: [String], selectedIndexes: Binding<IndexSet>) {
-        self.components = components
+        self._components = State(initialValue: components)
         self._selectedIndexes = selectedIndexes
     }
     
