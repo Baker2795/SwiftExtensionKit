@@ -8,6 +8,12 @@
 import Foundation
 
 public extension URL {
+    
+    init?(string: String?) {
+        guard let string else { return nil }
+        self.init(string: string)
+    }
+    
     func cleanedHost() -> String? {
         // Get the host from the URL
         guard let host = self.host else {
