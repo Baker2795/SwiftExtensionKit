@@ -68,3 +68,15 @@ public extension Array where Element: Equatable {
     }
     
 }
+
+public extension Array where Element: Numeric {
+    func average() -> Double? {
+        guard !isEmpty else { return nil }
+        
+        let sum = reduce(0.0) { (result, element) in
+            return result + Double(truncating: element as! NSNumber)
+        }
+        
+        return sum / Double(count)
+    }
+}
