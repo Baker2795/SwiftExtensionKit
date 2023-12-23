@@ -69,4 +69,12 @@ public extension Date {
 
         return dateFormatter.string(from: self)
     }
+    
+    func daysFromToday() -> Int {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let otherDate = calendar.startOfDay(for: self)
+        let components = calendar.dateComponents([.day], from: today, to: otherDate)
+        return components.day ?? 0
+    }
 }
