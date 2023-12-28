@@ -77,4 +77,9 @@ public extension Date {
         let components = calendar.dateComponents([.day], from: today, to: otherDate)
         return components.day ?? 0
     }
+    
+    func subtractDays(_ days: Int) -> Date {
+        let secondsInADay: TimeInterval = Double(days) * 24 * 60 * 60
+        return addingTimeInterval(-secondsInADay)
+    }
 }
