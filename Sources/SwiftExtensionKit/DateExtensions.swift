@@ -101,7 +101,7 @@ public extension Date {
         let currentDate = Date()
         
         guard let range = calendar.range(of: .day, in: .year, for: currentDate) else {
-            return 28
+            return 365
         }
         
         return range.count
