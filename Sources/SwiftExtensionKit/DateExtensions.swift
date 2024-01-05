@@ -83,3 +83,27 @@ public extension Date {
         return addingTimeInterval(-secondsInADay)
     }
 }
+
+public extension Date {
+    static func lengthOfMonth() -> Int {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        
+        guard let range = calendar.range(of: .day, in: .month, for: currentDate) else {
+            return 28
+        }
+        
+        return range.count
+    }
+    
+    static func lengthOfYear() -> Int {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        
+        guard let range = calendar.range(of: .day, in: .year, for: currentDate) else {
+            return 28
+        }
+        
+        return range.count
+    }
+}
