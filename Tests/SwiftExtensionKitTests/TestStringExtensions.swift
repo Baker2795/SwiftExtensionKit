@@ -8,4 +8,9 @@ final class StringExtensionTests: XCTestCase {
         
         XCTAssertEqual("(302) 781-1164", phoneString.cleanedPhoneNumber())
     }
+    
+    func testReplacingFirstInstanceOf() {
+        let firstString = "aaa"
+        XCTAssertEqual("baa", firstString.replacingFirstInstanceOf("a", with: "b"))
+    }
 }
