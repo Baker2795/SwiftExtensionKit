@@ -9,6 +9,9 @@ import SwiftUI
 
 @available(iOS 14.0, *)
 public struct iOSCheckboxToggleStyle: ToggleStyle {
+    
+    public init() { }
+    
     public func makeBody(configuration: Configuration) -> some View {
         Button(action: {
             configuration.isOn.toggle()
