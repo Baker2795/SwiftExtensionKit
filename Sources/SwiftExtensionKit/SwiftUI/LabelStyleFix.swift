@@ -24,7 +24,6 @@ public struct VerticalLabelStyle: LabelStyle {
                 configuration.icon.font(.headline)
                 configuration.title.font(.subheadline)
             }
-            
         }
     }
 }
