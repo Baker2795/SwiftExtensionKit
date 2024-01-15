@@ -40,6 +40,7 @@ public struct SegmentedMultiPicker: View {
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 6)
                 }
+                .disabled(isDisabled)
                 .buttonStyle(BorderlessButtonStyle())
                 .background {
                     if selectedIndexes.contains(index) {
