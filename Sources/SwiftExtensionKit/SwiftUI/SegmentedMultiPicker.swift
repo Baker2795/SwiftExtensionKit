@@ -17,7 +17,7 @@ public struct SegmentedMultiPicker: View {
     
     @State var isDisabled: Bool = false
     
-    public init(components: [String], selectedIndexes: Binding<IndexSet>, isDisabled: Bool) {
+    public init(components: [String], selectedIndexes: Binding<IndexSet>, isDisabled: Bool = false) {
         self._components = State(initialValue: components)
         self._selectedIndexes = selectedIndexes
         self._isDisabled = State(initialValue: isDisabled)
