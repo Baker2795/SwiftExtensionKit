@@ -50,6 +50,16 @@ public extension String {
         return cleanedString
     }
     
+    func removeWeirdCharactersFromPhoneNumber(leavingCountryCodePlus: Bool = true) -> String {
+        var characterSetString = "1234567890"
+        if leavingCountryCodePlus {
+            characterSetString.append("+")
+        }
+        let oddCharacters = CharacterSet(charactersIn: characterSetString).inverted
+        let filteredString = self.components(separatedBy: oddCharacters).joined()
+        return filteredString
+    }
+    
     /// Modify's the string & removes the last character
     mutating func removeLastCharacter() {
         if !self.isEmpty {

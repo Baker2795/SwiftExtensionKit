@@ -13,4 +13,10 @@ final class StringExtensionTests: XCTestCase {
         let firstString = "aaa"
         XCTAssertEqual("baa", firstString.replacingFirstInstanceOf("a", with: "b"))
     }
+    
+    func testRemoveWeirdCharactersFromPhoneNumber() {
+        let phoneString = "+1 (302) 781 1164"
+        XCTAssertEqual("+13027811164", phoneString.removeWeirdCharactersFromPhoneNumber())
+        XCTAssertEqual("13027811164", phoneString.removeWeirdCharactersFromPhoneNumber(leavingCountryCodePlus: false))
+    }
 }
