@@ -67,6 +67,18 @@ public extension Array where Element: Equatable {
         return !self.contains(element)
     }
     
+    // MARK: - Unique Insert
+    /// Inserts if element does not exist, does not insert if it does exist
+    mutating func uniqueInsert(_ element: Element, index: Int? = nil) {
+        if self.doesNotContain(element) {
+            if let index {
+                self.insert(element, at: index)
+            } else {
+                self.append(element)
+            }
+        }
+    }
+    
 }
 
 public extension Array where Element: Numeric {
