@@ -69,14 +69,19 @@ public extension Array where Element: Equatable {
     
     // MARK: - Unique Insert
     /// Inserts if element does not exist, does not insert if it does exist
-    mutating func uniqueInsert(_ element: Element, index: Int? = nil) {
+    /// Returns true if element was inserted similar to Set functionality
+    @discardableResult
+    mutating func uniqueInsert(_ element: Element, index: Int? = nil) -> Bool {
         if self.doesNotContain(element) {
             if let index {
                 self.insert(element, at: index)
+                return true
             } else {
                 self.append(element)
+                return true
             }
         }
+        return false
     }
     
 }
