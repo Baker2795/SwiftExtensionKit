@@ -29,4 +29,11 @@ public extension Double {
         
         return formatter.string(from: self as NSNumber) ?? ""
     }
+    
+    /// Takes a double & returns a display string with the given amount of decimal places
+    func asRoundedDecimalString(_ places: Int) -> String {
+        let divisor = pow(10.0, Double(places))
+        let roundedValue = (self * divisor).rounded() / divisor
+        return String(format: "%.\(places)f", roundedValue)
+    }
 }
