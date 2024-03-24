@@ -12,20 +12,35 @@ public struct OnTimerFireModifier: ViewModifier {
     let interval: TimeInterval
     let action: () -> Void
     
+    @State private var timer: Timer?
+    
     public func body(content: Content) -> some View {
-        content.onAppear {
-            let timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
-                action()
+        content
+            .onAppear {
+                self.timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
+                    action()
+                }
+                RunLoop.current.add(self.timer!, forMode: .common)
+                
+                // invalidate timer on move app to background
+                NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification, object: nil, queue: .main) { _ in
+                    self.timer?.invalidate()
+                }
+                
+                // restart timer on move app to foreground
+                NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { _ in
+                    if self.timer == nil {
+                        self.timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
+                            action()
+                        }
+                        RunLoop.current.add(self.timer!, forMode: .common)
+                    }
+                }
             }
-            
-            RunLoop.current.add(timer, forMode: .common)
-            NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification, object: nil, queue: .main) { _ in
-                timer.invalidate()
+            .onDisappear {
+                NotificationCenter.default.removeObserver(self)
+                self.timer?.invalidate()
             }
-        }
-        .onDisappear {
-            NotificationCenter.default.removeObserver(self)
-        }
     }
 }
 
