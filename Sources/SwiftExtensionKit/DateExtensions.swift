@@ -78,6 +78,13 @@ public extension Date {
         return components.day ?? 0
     }
     
+    func secondsFromNow() -> Int {
+        let calendar = Calendar.current
+        let now = Date()
+        let components = calendar.dateComponents([.second], from: now, to: self)
+        return components.second ?? 0
+    }
+    
     func subtractDays(_ days: Int) -> Date {
         let secondsInADay: TimeInterval = Double(days) * 24 * 60 * 60
         return addingTimeInterval(-secondsInADay)
