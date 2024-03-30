@@ -13,15 +13,14 @@ public struct DelayedDisableButtonModifier: ViewModifier {
     @State private var isDisabled = false
 
     public func body(content: Content) -> some View {
-        Button(action: {
-            isDisabled = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delaySeconds)) {
-                isDisabled = false
+        content
+            .disabled(isDisabled)
+            .onTapGesture {
+                isDisabled = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delaySeconds)) {
+                    isDisabled = false
+                }
             }
-        }) {
-            content
-        }
-        .disabled(isDisabled)
     }
 }
 
