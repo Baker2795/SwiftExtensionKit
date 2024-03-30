@@ -27,7 +27,7 @@ public struct DelayedDisableButtonModifier: ViewModifier {
 
 @available(iOS 13.0, *)
 public extension View {
-    func delayedDisableButton(delaySeconds: Int) -> some View {
+    func delayedDisableButton(_ delaySeconds: Int) -> some View {
         self.modifier(DelayedDisableButtonModifier(delaySeconds: delaySeconds))
     }
 }
