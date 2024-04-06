@@ -100,3 +100,9 @@ public extension String {
         return self.replacingCharacters(in: range, with: replacement)
     }
 }
+
+extension Optional where Wrapped == String {
+    var isEmptyOrNil: Bool {
+        return self?.isEmpty ?? true
+    }
+}
