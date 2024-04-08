@@ -29,7 +29,8 @@ public struct OnTimerFireModifier: ViewModifier {
                 
                 // restart timer on move app to foreground
                 NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { _ in
-                    if self.timer == nil {
+                    var isTimerValid: Bool = self.timer?.isValid ?? false
+                    if !isTimerValid {
                         self.timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
                             action()
                         }
