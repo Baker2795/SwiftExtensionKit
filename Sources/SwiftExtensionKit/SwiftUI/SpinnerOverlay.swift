@@ -14,7 +14,7 @@ public struct SpinnerOverlayModifier: ViewModifier {
     @State var spinnerColor: Color
     @State var backgroundColor: Color
 
-    var allowsBackgroundTaps: Bool = false
+    var allowsBackgroundTaps: Bool
     var shadesBackground: Bool = true
 
     public func body(content: Content) -> some View {
@@ -44,8 +44,8 @@ public struct SpinnerOverlayModifier: ViewModifier {
 
 @available(iOS 15.0, *)
 public extension View {
-    func spinnerOverlay(isLoading: Binding<Bool>, spinnerColor: Color = .white, backgroundColor: Color = .gray) -> some View {
-        self.modifier(SpinnerOverlayModifier(isLoading: isLoading, spinnerColor: spinnerColor, backgroundColor: backgroundColor))
+    func spinnerOverlay(isLoading: Binding<Bool>, allowsBackgroundTaps: Bool = false, shadesBackground: Bool = true, spinnerColor: Color = .white, backgroundColor: Color = .gray) -> some View {
+        self.modifier(SpinnerOverlayModifier(isLoading: isLoading, spinnerColor: spinnerColor, backgroundColor: backgroundColor, allowsBackgroundTaps: allowsBackgroundTaps, shadesBackground: shadesBackground))
     }
 }
 
