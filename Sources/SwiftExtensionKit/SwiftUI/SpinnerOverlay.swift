@@ -14,21 +14,29 @@ public struct SpinnerOverlayModifier: ViewModifier {
     @State var spinnerColor: Color
     @State var backgroundColor: Color
 
+    var allowsBackgroundTaps: Bool = false
+    var shadesBackground: Bool = true
+
     public func body(content: Content) -> some View {
         content
             .overlay {
                 if isLoading {
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(backgroundColor.opacity(0.7))
+                    ZStack {
+                        Color.white.opacity(shadesBackground ? 0.5 : 0.001)
+                            .allowsHitTesting(!allowsBackgroundTaps)
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(backgroundColor.opacity(0.7))
+                            .frame(width: 120, height: 120)
+                            .overlay(
+                                ProgressView()
+                                    .tint(spinnerColor)
+                                    .progressViewStyle(CircularProgressViewStyle())
+                                    .scaleEffect(1.5)
+                                    .foregroundColor(.white)
+                            )
                         .frame(width: 120, height: 120)
-                        .overlay(
-                            ProgressView()
-                                .tint(spinnerColor)
-                                .progressViewStyle(CircularProgressViewStyle())
-                                .scaleEffect(1.5)
-                                .foregroundColor(.white)
-                        )
-                    .frame(width: 120, height: 120)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
     }
@@ -42,19 +50,31 @@ public extension View {
 }
 
 @available(iOS 17.0, *)
-#Preview {
-    VStack {
-        RoundedRectangle(cornerRadius: 15)
-            .fill(.red)
+struct SpinnerPreview: PreviewProvider {
+
+
+    @available(iOS 17.0, *)
+    static var previews: some View {
+        VStack {
+            HStack {
+                Button("ll") { }
+                Spacer()
+            }.background {
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(.red)
+                    .frame(width: 180, height: 50)
+            }
             .frame(width: 180, height: 50)
-        
-        RoundedRectangle(cornerRadius: 15)
-            .fill(.green)
-            .frame(width: 180, height: 50)
-        
-        RoundedRectangle(cornerRadius: 15)
-            .fill(.yellow)
-            .frame(width: 180, height: 50)
+
+            RoundedRectangle(cornerRadius: 15)
+                .fill(.green)
+                .frame(width: 180, height: 50)
+
+            RoundedRectangle(cornerRadius: 15)
+                .fill(.yellow)
+                .frame(width: 180, height: 50)
+        }
+        .spinnerOverlay(isLoading: .constant(true))
     }
-    .spinnerOverlay(isLoading: .constant(true))
+
 }
