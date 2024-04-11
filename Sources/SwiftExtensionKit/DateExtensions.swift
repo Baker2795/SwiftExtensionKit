@@ -113,4 +113,9 @@ public extension Date {
         
         return range.count
     }
+
+    static func dateFromComponents(_ components: DateComponents) -> Date? {
+        let calendar = Calendar.current
+        return calendar.date(from: components)
+    }
 }
