@@ -8,7 +8,16 @@
 import Foundation
 
 public extension Array {
-    
+    // MARK: - SplitArray
+    /// Splits the arrow & returns a tuple of first half / second half
+    /// If the array is an odd number of items, the .0 is what contains the extra element
+    var splitArray: ([Element], [Element]) {
+        let middleIndex = count / 2 + count % 2
+        let firstHalf = Array(self[0..<middleIndex])
+        let secondHalf = Array(self[middleIndex..<count])
+        return (firstHalf, secondHalf)
+    }
+
     // MARK: - Shuffle
     /// Allows full shuffle of an array
     mutating func shuffle() {
