@@ -8,16 +8,16 @@
 import Foundation
 
 @propertyWrapper
-struct DateStorage {
+public struct DateStorage {
     private let key: String
     private let defaultValue: Date?
 
-    init(wrappedValue: Date?, _ key: String) {
+    public init(wrappedValue: Date?, _ key: String) {
         self.key = key
         self.defaultValue = wrappedValue
     }
 
-    var wrappedValue: Date? {
+    public var wrappedValue: Date? {
         get {
             let timeInterval = UserDefaults.standard.double(forKey: key)
             return timeInterval == 0 ? defaultValue : Date(timeInterval: timeInterval)
