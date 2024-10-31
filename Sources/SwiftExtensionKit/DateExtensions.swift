@@ -118,4 +118,9 @@ public extension Date {
         let calendar = Calendar.current
         return calendar.date(from: components) ?? Date()
     }
+
+    static func dateComponents() -> DateComponents {
+        let calendar = Calendar.current
+        return calendar.dateComponents([.hour, .minute, .second], from: Date())
+    }
 }
